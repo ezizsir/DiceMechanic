@@ -494,6 +494,7 @@ RectTransform:
   - {fileID: 1455696533}
   - {fileID: 1585110133}
   - {fileID: 283416631}
+  - {fileID: 984645072}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -537,7 +538,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.0000038146973}
+  m_AnchoredPosition: {x: 0, y: 88}
   m_SizeDelta: {x: 183.2634, y: 56.4135}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &283416632
@@ -649,7 +650,7 @@ GameObject:
   - component: {fileID: 416611226}
   - component: {fileID: 416611225}
   m_Layer: 5
-  m_Name: Button
+  m_Name: RollButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1793,6 +1794,7 @@ GameObject:
   m_Component:
   - component: {fileID: 676771310}
   - component: {fileID: 676771311}
+  - component: {fileID: 676771312}
   m_Layer: 0
   m_Name: DieSlot1 (1)
   m_TagString: Untagged
@@ -1833,12 +1835,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  riseHeight: 1.5
+  riseHeight: 0.5
   moveDuration: 0.25
   shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
-  lockedAlpha: 0.45
+  lockedTint: {r: 0.55, g: 0.55, b: 0.55, a: 1}
+--- !u!61 &676771312
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676771309}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.13068289, y: 0.08712196}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.93223846, y: 0.9419184}
+  m_EdgeRadius: 0
 --- !u!1 &703532033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2217,6 +2265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 962206806}
   - component: {fileID: 962206807}
+  - component: {fileID: 962206808}
   m_Layer: 0
   m_Name: DieSlot1 (3)
   m_TagString: Untagged
@@ -2257,12 +2306,195 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  riseHeight: 1.5
+  riseHeight: 0.5
   moveDuration: 0.25
   shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
-  lockedAlpha: 0.45
+  lockedTint: {r: 0.55, g: 0.55, b: 0.55, a: 1}
+--- !u!61 &962206808
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962206805}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.40172887, y: 0.06776154}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.9322381, y: 0.8644769}
+  m_EdgeRadius: 0
+--- !u!1 &984645069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 984645072}
+  - component: {fileID: 984645071}
+  - component: {fileID: 984645070}
+  m_Layer: 5
+  m_Name: PayoutText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &984645070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984645069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Combo
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 32
+  m_fontSizeBase: 32
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656bu
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -49.777145, y: 0, z: -55.565216, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &984645071
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984645069}
+  m_CullTransparentMesh: 1
+--- !u!224 &984645072
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 984645069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 278128289}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 12}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &994105240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,6 +2952,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110748392}
   - component: {fileID: 1110748393}
+  - component: {fileID: 1110748394}
   m_Layer: 0
   m_Name: DieSlot1 (4)
   m_TagString: Untagged
@@ -2760,12 +2993,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  riseHeight: 1.5
+  riseHeight: 0.5
   moveDuration: 0.25
   shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
-  lockedAlpha: 0.45
+  lockedTint: {r: 0.55, g: 0.55, b: 0.55, a: 1}
+--- !u!61 &1110748394
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110748391}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.5420917, y: 0.08712196}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.96127915, y: 0.94191885}
+  m_EdgeRadius: 0
 --- !u!1 &1365920932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2984,7 +3263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -89}
+  m_AnchoredPosition: {x: 0, y: -46}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455696534
@@ -3281,6 +3560,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1530733972}
   - component: {fileID: 1530733973}
+  - component: {fileID: 1530733974}
   m_Layer: 0
   m_Name: DieSlot1 (2)
   m_TagString: Untagged
@@ -3321,12 +3601,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  riseHeight: 1.5
+  riseHeight: 0.5
   moveDuration: 0.25
   shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
-  lockedAlpha: 0.45
+  lockedTint: {r: 0.55, g: 0.55, b: 0.55, a: 1}
+--- !u!61 &1530733974
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530733971}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.26620573, y: 0.048401117}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.8741573, y: 0.90319777}
+  m_EdgeRadius: 0
 --- !u!1 &1538983900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3429,6 +3755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1558852342}
   - component: {fileID: 1558852343}
+  - component: {fileID: 1558852344}
   m_Layer: 0
   m_Name: DieSlot1
   m_TagString: Untagged
@@ -3474,7 +3801,53 @@ MonoBehaviour:
   shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
-  lockedAlpha: 0.45
+  lockedTint: {r: 0.55, g: 0.55, b: 0.55, a: 1}
+--- !u!61 &1558852344
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558852340}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1585110132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3509,7 +3882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -146}
+  m_AnchoredPosition: {x: 0, y: -103}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1585110134
@@ -3784,13 +4157,32 @@ MonoBehaviour:
   - {fileID: 1530733973}
   - {fileID: 962206807}
   - {fileID: 1110748393}
-  shuffleCounts: 080000000c000000100000001400000018000000i
+  shuffleCounts: 080000000a0000000c0000000e00000010000000i
   raiseDelay: 0.1
   addDieButton: {fileID: 283416630}
   scoreText: {fileID: 1455696534}
   multiplierText: {fileID: 1585110134}
+  payoutText: {fileID: 984645070}
   scoreColor: {r: 1, g: 1, b: 1, a: 1}
   multiplierTitleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  payoutColor: {r: 0, g: 1, b: 0, a: 1}
+  handRules:
+  - title: Five of a kind
+    multiplier: 10
+  - title: Full House
+    multiplier: 3.5
+  - title: Four of a kind
+    multiplier: 5
+  - title: Straight
+    multiplier: 3
+  - title: Three of a kind
+    multiplier: 2.5
+  - title: Two pairs
+    multiplier: 2
+  - title: One pair
+    multiplier: 1.5
+  - title: High Roller
+    multiplier: 1
 --- !u!4 &1688826253
 Transform:
   m_ObjectHideFlags: 0

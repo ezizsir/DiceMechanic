@@ -14,7 +14,7 @@ public class DieRoller : MonoBehaviour
     [SerializeField] private float layerStep = 0.1f;
 
     [Header("Lock Settings:")]
-    [SerializeField] private float lockedAlpha = 0.45f; // how faded a locked die looks
+    [SerializeField] private Color lockedTint = new Color(0.55f, 0.55f, 0.55f); // gray tone for locked dice
 
     private Transform[] move;
     private Vector3[] localCoordinate;
@@ -101,16 +101,15 @@ public class DieRoller : MonoBehaviour
         if (!CanLock || isRolling) return;
 
         isLocked = !isLocked;
-        SetFaceAlpha(isLocked ? lockedAlpha : 1f);
+        ApplyLockedLook();
     }
 
-    private void SetFaceAlpha(float alpha)
+    // Locked dice: gray tint, full opacity (no transparency)
+    private void ApplyLockedLook()
     {
         for (int i = 0; i < dieFaces; i++)
         {
-            Color c = faceRenderers[i].color;
-            c.a = alpha;
-            faceRenderers[i].color = c;
+            faceRenderers[i].color = isLocked ? lockedTint : Color.white;
         }
     }
 

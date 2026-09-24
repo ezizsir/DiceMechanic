@@ -19,11 +19,40 @@ public class DiceRollManager : MonoBehaviour
     [Header("Score Display:")]
     [SerializeField] private TextMeshProUGUI scoreText;  // TOTAL display
     [SerializeField] private TextMeshProUGUI multiplierText; // multiplier title + value
+    [SerializeField] private TextMeshProUGUI payoutText; // TOTAL x multiplier
     [SerializeField] private Color scoreColor = Color.white;
     [SerializeField] private Color multiplierTitleColor = Color.yellow;
+    [SerializeField] private Color payoutColor = Color.green;
+
+    [Header("Hand Multipliers:")]
+    [SerializeField] private HandRule[] handRules = new HandRule[]
+    {
+        new HandRule("Five of a kind", 10f),
+        new HandRule("Full House", 3.5f),
+        new HandRule("Four of a kind", 5f),
+        new HandRule("Straight", 3f),
+        new HandRule("Three of a kind", 2.5f),
+        new HandRule("Two pairs", 2f),
+        new HandRule("One pair", 1.5f),
+        new HandRule("High Roller", 1f),
+    };
+
+    // Unity can't serialize a Dictionary, so the editable list above is converted
+    // into one at startup. EvaluateHand looks multipliers up here by title.
+    private Dictionary<string, float> multiplierLookup;
 
     private int activeDice = 0;   // how many dice currently in play (starts at 1)
     private bool awaitingClicks = false;
+
+    private void Awake()
+    {
+        // Build the title -> multiplier lookup from the Inspector list
+        multiplierLookup = new Dictionary<string, float>();
+        foreach (HandRule rule in handRules)
+        {
+            multiplierLookup[rule.title] = rule.multiplier;
+        }
+    }
 
     private void Start()
     {
@@ -45,19 +74,23 @@ public class DiceRollManager : MonoBehaviour
     {
         awaitingClicks = false;
 
-        // 1. All dice rise up together (staggered slightly so it reads as a group)
+        // 1. All UNLOCKED dice rise up together (staggered slightly so it reads as a group)
         for (int i = 0; i < activeDice; i++)
         {
+            if (dice[i].IsLocked) continue; // locked die: no rise, no shuffle, keeps its face
             dice[i].ResetLayers();
             dice[i].RaiseUp();
             yield return new WaitForSeconds(raiseDelay);
         }
         yield return new WaitForSeconds(0.3f); // let the rise finish
 
-        // 2. All dice shuffle at the same time, different counts so they drop one by one
+        // 2. All unlocked dice shuffle at the same time, different counts so they drop one by one
         int done = 0;
+        int toRoll = 0;
         for (int i = 0; i < activeDice; i++)
         {
+            if (dice[i].IsLocked) continue;
+            toRoll++;
             DieRoller die = dice[i];
             die.OnRollEnd += OnDieFinished;
             die.BeginShuffle(shuffleCounts[i]);
@@ -69,8 +102,8 @@ public class DiceRollManager : MonoBehaviour
             done++;
         }
 
-        // wait until every die has finished shuffling and dropped
-        yield return new WaitUntil(() => done >= activeDice);
+        // wait until every unlocked die has finished shuffling and dropped
+        yield return new WaitUntil(() => done >= toRoll);
 
         // 3. Report results
         ReportResults();
@@ -98,8 +131,11 @@ public class DiceRollManager : MonoBehaviour
 
         (string title, float multiplier) = EvaluateHand(values);
 
+        float payout = total * multiplier;
+
         Debug.Log($"TOTAL: {total}");
         Debug.Log($"{title} x{multiplier}");
+        Debug.Log($"PAYOUT: {payout}");
 
         // In-game display
         if (scoreText != null)
@@ -112,9 +148,28 @@ public class DiceRollManager : MonoBehaviour
             multiplierText.text = $"{title}  x{multiplier}";
             multiplierText.color = multiplierTitleColor;
         }
+        if (payoutText != null)
+        {
+            payoutText.text = $"PAYOUT: {payout}";
+            payoutText.color = payoutColor;
+        }
     }
 
-    private static (string, float) EvaluateHand(List<int> v)
+    // One row in the Inspector: hand title + its multiplier value
+    [Serializable]
+    public class HandRule
+    {
+        public string title;      // e.g. "Full House"
+        public float multiplier;  // e.g. 3.5
+
+        public HandRule(string title, float multiplier)
+        {
+            this.title = title;
+            this.multiplier = multiplier;
+        }
+    }
+
+    private (string, float) EvaluateHand(List<int> v)
     {
         // count how many times each face appears
         int[] counts = new int[7];
@@ -129,15 +184,19 @@ public class DiceRollManager : MonoBehaviour
             if (c == 5) hasFive = true;
         }
 
-        if (hasFive) return ("Five of a kind", 10f);
-        if (hasFour) return ("Four of a kind", 5f);
-        if (hasThree && hasPair) return ("Full House", 3.5f);
-        if (counts[1] >= 1 && counts[2] >= 1 && counts[3] >= 1 && counts[4] >= 1 && counts[5] >= 1 && counts[6] >= 1 && v.Count == 5)
-            return ("Straight", 3f);
-        if (hasThree) return ("Three of a kind", 2.5f);
-        if (hasTwoPair) return ("Two pairs", 2f);
-        if (hasPair) return ("One pair", 1.5f);
-        return ("High Roller", 1f);
+        // Which hand matched? Order matters: strongest hand first.
+        string matched;
+        if (hasFive) matched = "Five of a kind";
+        else if (hasFour) matched = "Four of a kind";
+        else if (hasThree && hasPair) matched = "Full House";
+        else if (counts[1] >= 1 && counts[2] >= 1 && counts[3] >= 1 && counts[4] >= 1 && counts[5] >= 1 && counts[6] >= 1 && v.Count == 5) matched = "Straight";
+        else if (hasThree) matched = "Three of a kind";
+        else if (hasTwoPair) matched = "Two pairs";
+        else if (hasPair) matched = "One pair";
+        else matched = "High Roller";
+
+        // Multiplier comes from the Inspector-configured dictionary
+        return (matched, multiplierLookup.TryGetValue(matched, out float m) ? m : 1f);
     }
 
     // Add Die button listener: adds the next slot, max 5 total
