@@ -40,9 +40,32 @@ public class DieRoller : MonoBehaviour
 
         for (int i = 0; i < dieFaces; i++)
         {
-            move[i] = transform.GetChild(i);
-            localCoordinate[i] = move[i].localPosition;
-            faceRenderers[i] = move[i].GetComponent<SpriteRenderer>();
+            move[i] = null;
+        }
+
+        // Hierarchy order is NOT trusted (children can be in any order).
+        // Instead, each child is matched by name: "Die_Faces3_..." goes to slot 2 (face 3).
+        foreach (Transform child in transform)
+        {
+            for (int f = 1; f <= dieFaces; f++)
+            {
+                if (child.name.StartsWith($"Die_Faces{f}"))
+                {
+                    move[f - 1] = child;
+                    localCoordinate[f - 1] = child.localPosition;
+                    faceRenderers[f - 1] = child.GetComponent<SpriteRenderer>();
+                    break;
+                }
+            }
+        }
+
+        // Safety check: complain loudly if a face slot never got filled
+        for (int i = 0; i < dieFaces; i++)
+        {
+            if (move[i] == null)
+            {
+                Debug.LogError($"{name}: no child named 'Die_Faces{i + 1}...' found. Face {i + 1} will not work.");
+            }
         }
     }
 
@@ -135,12 +158,13 @@ public class DieRoller : MonoBehaviour
     // Pick a NEW top face (avoids re-picking the current one, which made shuffling look dead)
     private void RandomizeLayers()
     {
-        int randomIndex = UnityEngine.Random.Range(0, dieFaces - 1);
-        if (randomIndex >= topFace) randomIndex++;
+        int randomIndex = UnityEngine.Random.Range(0, dieFaces); // 1-6
+        while (randomIndex == topFace) randomIndex = UnityEngine.Random.Range(0, dieFaces);
 
-        layerOffset += layerStep;
+        layerOffset -= layerStep;
 
         move[randomIndex].localPosition = new Vector3(localCoordinate[randomIndex].x, localCoordinate[randomIndex].y, layerOffset);
         topFace = randomIndex;
+        Debug.Log($"Die {gameObject.name} top face: {topFace + 1}");
     }
 }
