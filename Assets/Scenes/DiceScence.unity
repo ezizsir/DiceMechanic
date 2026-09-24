@@ -536,7 +536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -223}
+  m_AnchoredPosition: {x: 0, y: -256.8}
   m_SizeDelta: {x: 200, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &416611225
@@ -1694,15 +1694,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 676771309}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8b597cf2d6a504a947b3ce9d7cb965, type: 3}
+  m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  rise: 0.5
-  animation: 0.25
-  shuffle: 12
-  shuffleDelay: 0.2
+  riseHeight: 1.5
+  moveDuration: 0.25
+  shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
+  lockedAlpha: 0.45
 --- !u!1 &703532033
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,15 +2118,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 962206805}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8b597cf2d6a504a947b3ce9d7cb965, type: 3}
+  m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  rise: 0.5
-  animation: 0.25
-  shuffle: 12
-  shuffleDelay: 0.2
+  riseHeight: 1.5
+  moveDuration: 0.25
+  shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
+  lockedAlpha: 0.45
 --- !u!1 &994105240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,15 +2621,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1110748391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8b597cf2d6a504a947b3ce9d7cb965, type: 3}
+  m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  rise: 0.5
-  animation: 0.25
-  shuffle: 12
-  shuffleDelay: 0.2
+  riseHeight: 1.5
+  moveDuration: 0.25
+  shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
+  lockedAlpha: 0.45
 --- !u!1 &1365920932
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,15 +3045,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1530733971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8b597cf2d6a504a947b3ce9d7cb965, type: 3}
+  m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  rise: 0.5
-  animation: 0.25
-  shuffle: 12
-  shuffleDelay: 0.2
+  riseHeight: 1.5
+  moveDuration: 0.25
+  shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
+  lockedAlpha: 0.45
 --- !u!1 &1538983900
 GameObject:
   m_ObjectHideFlags: 0
@@ -3193,15 +3193,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1558852340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8b597cf2d6a504a947b3ce9d7cb965, type: 3}
+  m_Script: {fileID: 11500000, guid: 703d1ebcb592d7f4db410bdc225c9acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DieRoller
-  rise: 0.5
-  animation: 0.25
-  shuffle: 12
-  shuffleDelay: 0.2
+  riseHeight: 0.5
+  moveDuration: 0.25
+  shuffleDelay: 0.1
   dieFaces: 6
   layerStep: 0.1
+  lockedAlpha: 0.45
 --- !u!1 &1688826251
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,6 +3237,13 @@ MonoBehaviour:
   - {fileID: 1530733973}
   - {fileID: 962206807}
   - {fileID: 1110748393}
+  shuffleCounts: 080000000c000000100000001400000018000000i
+  raiseDelay: 0.1
+  addDieButton: {fileID: 0}
+  scoreText: {fileID: 0}
+  multiplierText: {fileID: 0}
+  scoreColor: {r: 1, g: 1, b: 1, a: 1}
+  multiplierTitleColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!4 &1688826253
 Transform:
   m_ObjectHideFlags: 0
